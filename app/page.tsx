@@ -1,6 +1,11 @@
+'use client';
+
 import Link from 'next/link';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function Home() {
+  useScrollAnimation();
+
   return (
     <div className="relative bg-black">
       <section className="relative min-h-screen flex items-center justify-center wave-background">
@@ -21,20 +26,30 @@ export default function Home() {
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-5xl mx-auto space-y-8">
             <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-tight tracking-wider hero-title">
-              <span className="text-white word-animate">WELCOME</span>{' '}
-              <span className="word-animate">
-                <span className="animate-gradient">LINKER</span>
+              <span className="text-white">
+                {'WELCOME'.split('').map((letter, index) => (
+                  <span key={index} className="letter-animate" style={{ animationDelay: `${index * 0.1}s` }}>
+                    {letter}
+                  </span>
+                ))}
+              </span>{' '}
+              <span className="linker-text-wrapper">
+                {'LINKER'.split('').map((letter, index) => (
+                  <span key={index} className="letter-animate linker-gradient" style={{ animationDelay: `${(index + 7) * 0.1}s` }}>
+                    {letter}
+                  </span>
+                ))}
               </span>
             </h1>
-            <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed fade-in-up" style={{ animationDelay: '1.4s' }}>
               Automatically updates import statements when you rename or move files and folders. Supports JavaScript, TypeScript, React, Python, Java, Go, and CSS with enhanced diff preview and undo/redo.
             </p>
-            <div className="pt-8">
+            <div className="pt-8 fade-in-up" style={{ animationDelay: '1.7s' }}>
               <a
                 href="https://marketplace.visualstudio.com/items?itemName=linkerdev.import-linker"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary text-lg px-8 py-3"
+                className="btn-primary text-lg px-8 py-3 pulse-glow"
               >
                 INSTALL NOW
               </a>
@@ -45,7 +60,7 @@ export default function Home() {
       <section className="py-20 bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 scroll-fade-in">
               <h2 className="text-5xl font-bold text-white mb-4">
                 Why Choose <span className="gradient-text">Linker</span>?
               </h2>
@@ -62,10 +77,11 @@ export default function Home() {
                 { icon: "🎨", title: "Format Preserving", description: "Maintains your code style, quotes, and semicolons" },
                 { icon: "🔒", title: "Git Integration", description: "Seamless integration with Git workflows and auto-staging" }
               ].map((feature, index) => (
-                <div key={index} className="p-6 bg-gray-900 border border-gray-800 rounded-xl hover:border-orange-500 transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
+                <div key={index} className="feature-card group scroll-fade-in">
+                  <div className="text-4xl mb-4 icon-bounce">{feature.icon}</div>
+                  <h3 className="text-xl font-bold text-white mb-2 gradient-text-hover">{feature.title}</h3>
                   <p className="text-gray-400">{feature.description}</p>
+                  <div className="card-shine"></div>
                 </div>
               ))}
             </div>
@@ -75,7 +91,7 @@ export default function Home() {
       <section className="py-20 bg-black border-t border-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
+            <div className="text-center mb-12 scroll-fade-in">
               <h2 className="text-5xl font-bold text-white mb-4">
                 See <span className="gradient-text">Linker</span> in Action
               </h2>
@@ -83,10 +99,10 @@ export default function Home() {
                 Watch how Linker automatically updates your imports
               </p>
             </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border border-gray-800">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border border-gray-800 card-glow scroll-scale">
               <div className="aspect-video flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-6xl mb-4">▶️</div>
+                  <div className="text-6xl mb-4 pulse-animation">▶️</div>
                   <p className="text-gray-400">Demo video coming soon</p>
                 </div>
               </div>
@@ -97,8 +113,8 @@ export default function Home() {
                 { number: "1000+", label: "Files Handled" },
                 { number: "100%", label: "Automatic Updates" }
               ].map((stat, index) => (
-                <div key={index} className="text-center p-6 bg-gray-900 border border-gray-800 rounded-xl">
-                  <div className="text-5xl font-bold gradient-text mb-2">{stat.number}</div>
+                <div key={index} className="stat-card scroll-fade-in">
+                  <div className="text-5xl font-bold gradient-text mb-2 number-animation">{stat.number}</div>
                   <div className="text-gray-400 font-medium">{stat.label}</div>
                 </div>
               ))}
@@ -108,7 +124,7 @@ export default function Home() {
       </section>
       <section className="py-20 bg-black border-t border-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto scroll-fade-in">
             <h2 className="text-5xl font-bold text-white mb-6">
               Ready to Get Started?
             </h2>
