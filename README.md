@@ -81,28 +81,6 @@ If you need environment variables, add them in Vercel:
 2. Navigate to "Environment Variables"
 3. Add variables from `.env.example`
 
-## 📁 Project Structure
-
-```
-linker-website/
-├── app/
-│   ├── about/              # About page
-│   ├── user-guide/         # Documentation page
-│   ├── layout.tsx          # Root layout
-│   ├── page.tsx            # Home page
-│   └── globals.css         # Global styles
-├── components/
-│   └── layout/
-│       ├── Header.tsx      # Navigation header
-│       ├── Footer.tsx      # Footer component
-│       └── ClientLayout.tsx
-├── public/
-│   └── images/             # Static images (logo, etc.)
-├── next.config.ts          # Next.js configuration
-├── tailwind.config.ts      # Tailwind configuration
-├── vercel.json             # Vercel deployment config
-└── package.json            # Dependencies
-```
 
 ## 📁 Project Structure
 
