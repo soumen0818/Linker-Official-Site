@@ -1,6 +1,11 @@
+'use client';
+
 import Link from 'next/link';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 export default function About() {
+    useScrollAnimation();
+
     return (
         <div className="min-h-screen bg-black">
             <section className="py-20 wave-background">
@@ -19,7 +24,7 @@ export default function About() {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-5xl mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-                            <div>
+                            <div className="scroll-fade-left">
                                 <h2 className="text-4xl font-bold text-white mb-6">
                                     What is Linker?
                                 </h2>
@@ -35,7 +40,7 @@ export default function About() {
                                     </p>
                                 </div>
                             </div>
-                            <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8">
+                            <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8 scroll-fade-right">
                                 <h3 className="text-2xl font-bold text-white mb-6">Key Features</h3>
                                 <ul className="space-y-4">
                                     {[
@@ -61,7 +66,7 @@ export default function About() {
             <section className="py-20 bg-black border-t border-gray-900">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-5xl mx-auto">
-                        <h2 className="text-4xl font-bold text-white text-center mb-16">
+                        <h2 className="text-4xl font-bold text-white text-center mb-16 scroll-fade-in">
                             How It Works
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -82,7 +87,7 @@ export default function About() {
                                     description: "Review and apply the changes with one click. All imports are automatically updated throughout your codebase"
                                 }
                             ].map((item, index) => (
-                                <div key={index} className="text-center">
+                                <div key={index} className="text-center scroll-fade-in">
                                     <div className="text-5xl font-bold gradient-text mb-4">{item.step}</div>
                                     <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
                                     <p className="text-gray-300">{item.description}</p>
@@ -95,7 +100,7 @@ export default function About() {
             <section className="py-20 bg-black border-t border-gray-900">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-5xl mx-auto">
-                        <h2 className="text-4xl font-bold text-white text-center mb-16">
+                        <h2 className="text-4xl font-bold text-white text-center mb-16 scroll-fade-in">
                             Why Developers Love Linker
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -121,10 +126,11 @@ export default function About() {
                                     description: "Handles large codebases with thousands of files efficiently and reliably"
                                 }
                             ].map((item, index) => (
-                                <div key={index} className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-orange-500 transition-all duration-300">
-                                    <div className="text-5xl mb-4">{item.emoji}</div>
-                                    <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                                <div key={index} className="feature-card group scroll-fade-in">
+                                    <div className="text-5xl mb-4 icon-bounce">{item.emoji}</div>
+                                    <h3 className="text-xl font-bold text-white mb-2 gradient-text-hover">{item.title}</h3>
                                     <p className="text-gray-300">{item.description}</p>
+                                    <div className="card-shine"></div>
                                 </div>
                             ))}
                         </div>
@@ -133,7 +139,7 @@ export default function About() {
             </section>
             <section className="py-20 bg-black border-t border-gray-900">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="max-w-3xl mx-auto">
+                    <div className="max-w-3xl mx-auto scroll-fade-in">
                         <h2 className="text-5xl font-bold text-white mb-6">
                             Ready to Try Linker?
                         </h2>
