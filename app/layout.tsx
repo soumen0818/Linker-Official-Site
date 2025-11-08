@@ -68,10 +68,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  icons: {
-    icon: '/images/linker-logo.png',
-    apple: '/images/linker-logo.png',
-  },
+  // Icons will be auto-detected from app directory: icon.png, apple-icon.png, favicon.ico
 };
 
 export default function RootLayout({
@@ -81,6 +78,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" type="image/png" href="/images/linker-logo.png" />
+        <link rel="shortcut icon" href="/images/linker-logo.png" />
+        <link rel="apple-touch-icon" href="/images/linker-logo.png" />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <ClientLayout>{children}</ClientLayout>
       </body>
