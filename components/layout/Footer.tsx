@@ -6,7 +6,8 @@ import Link from 'next/link';
 
 export default function Footer() {
     const [email, setEmail] = useState('');
-    const [subscribeStatus, setSubscribeStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [subscribeStatus, setSubscribeStatus] = useState<'idle' | 'loading' | 'success' | 'error' | 'exists'>('idle');
+    const [message, setMessage] = useState('');
 
     const handleSubscribe = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -14,13 +15,44 @@ export default function Footer() {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             setSubscribeStatus('error');
+            setMessage('Please enter a valid email address');
             setTimeout(() => setSubscribeStatus('idle'), 3000);
             return;
         }
 
-        setSubscribeStatus('success');
-        setEmail('');
-        setTimeout(() => setSubscribeStatus('idle'), 5000);
+        setSubscribeStatus('loading');
+
+        try {
+            const response = await fetch('/api/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setSubscribeStatus('success');
+                setMessage(data.message || 'Thank you for subscribing!');
+                setEmail('');
+                setTimeout(() => setSubscribeStatus('idle'), 5000);
+            } else if (response.status === 409) {
+                setSubscribeStatus('exists');
+                setMessage('This email is already subscribed!');
+                setTimeout(() => setSubscribeStatus('idle'), 3000);
+            } else {
+                setSubscribeStatus('error');
+                setMessage(data.error || 'Failed to subscribe');
+                setTimeout(() => setSubscribeStatus('idle'), 3000);
+            }
+        } catch (error) {
+            console.error('Subscription error:', error);
+            setSubscribeStatus('error');
+            setMessage('Network error. Please try again.');
+            setTimeout(() => setSubscribeStatus('idle'), 3000);
+        }
     };
 
     return (
@@ -52,7 +84,7 @@ export default function Footer() {
                                 href="https://www.linkedin.com/company/linker-extension"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-400 hover:text-orange-500 transition-colors duration-200"
+                                className="text-gray-400 hover:text-[#0A66C2] transition-colors duration-200"
                                 aria-label="LinkedIn"
                             >
                                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -63,11 +95,31 @@ export default function Footer() {
                                 href="https://twitter.com/linker_extension"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-400 hover:text-orange-500 transition-colors duration-200"
-                                aria-label="Twitter"
+                                className="text-gray-400 hover:text-black transition-colors duration-200"
+                                aria-label="X (Twitter)"
                             >
                                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
+                            </a>
+                            <a
+                                href="https://discord.gg/your-discord-server"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-400 hover:text-[#5865F2] transition-colors duration-200"
+                                aria-label="Discord"
+                            >
+                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z" />
+                                </svg>
+                            </a>
+                            <a
+                                href="mailto:importlinker@gmail.com"
+                                className="text-gray-400 hover:text-[#EA4335] transition-colors duration-200"
+                                aria-label="Email"
+                            >
+                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                                 </svg>
                             </a>
                         </div>
@@ -95,7 +147,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href="/user-guide"
+                                    href="/documentation"
                                     className="text-gray-300 hover:text-white transition-colors duration-200"
                                 >
                                     Documentation
@@ -110,7 +162,7 @@ export default function Footer() {
                         <ul className="space-y-3">
                             <li>
                                 <Link
-                                    href="/user-guide#installation"
+                                    href="/documentation#installation"
                                     className="text-gray-300 hover:text-white transition-colors duration-200"
                                 >
                                     Installation
@@ -118,7 +170,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href="/user-guide#getting-started"
+                                    href="/documentation#getting-started"
                                     className="text-gray-300 hover:text-white transition-colors duration-200"
                                 >
                                     Getting Started
@@ -153,16 +205,25 @@ export default function Footer() {
                             />
                             <button
                                 type="submit"
-                                className="btn-primary w-full py-3"
+                                disabled={subscribeStatus === 'loading'}
+                                className="btn-primary w-full py-3 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Subscribe
+                                {subscribeStatus === 'loading' ? 'Subscribing...' : 'Subscribe'}
                             </button>
                             {subscribeStatus === 'success' && (
                                 <p className="text-green-400 text-sm flex items-center">
                                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                                     </svg>
-                                    Successfully subscribed!
+                                    {message}
+                                </p>
+                            )}
+                            {subscribeStatus === 'exists' && (
+                                <p className="text-yellow-400 text-sm flex items-center">
+                                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                                    </svg>
+                                    {message}
                                 </p>
                             )}
                             {subscribeStatus === 'error' && (
@@ -170,7 +231,7 @@ export default function Footer() {
                                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                                     </svg>
-                                    Please enter a valid email
+                                    {message}
                                 </p>
                             )}
                         </form>
