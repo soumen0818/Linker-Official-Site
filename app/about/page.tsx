@@ -147,7 +147,7 @@ export default function About() {
                             Join thousands of developers who have streamlined their workflow with Linker
                         </p>
                         <div className="flex justify-center">
-                            <Link href="/user-guide">
+                            <Link href="/documentation">
                                 <button className="btn-primary text-lg px-8 py-3">
                                     View User Guide
                                 </button>
