@@ -132,12 +132,12 @@ export default function Home() {
               Install Linker from VS Code Marketplace and never worry about broken imports again
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/user-guide#installation">
+              <Link href="/documentation#installation">
                 <button className="btn-primary text-lg px-8 py-3">
                   Get Installation Guide
                 </button>
               </Link>
-              <Link href="/user-guide">
+              <Link href="/documentation">
                 <button className="px-8 py-3 border border-white rounded-full text-white hover:bg-white hover:text-black transition-all duration-300">
                   Learn More
                 </button>
