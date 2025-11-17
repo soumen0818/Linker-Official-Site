@@ -43,7 +43,7 @@ export default function Header() {
                             ABOUT US
                         </Link>
                         <Link
-                            href="/user-guide"
+                            href="/documentation"
                             className="px-6 py-2 bg-gray-900 hover:bg-gray-800 gradient-text font-semibold rounded-full transition-all duration-300 border border-gray-700 hover:border-orange-500"
                             style={{ fontFamily: 'Arial, sans-serif' }}
                         >
@@ -89,7 +89,7 @@ export default function Header() {
                                 ABOUT US
                             </Link>
                             <Link
-                                href="/user-guide"
+                                href="/documentation"
                                 className="px-6 py-3 bg-gray-900 hover:bg-gray-800 gradient-text font-semibold rounded-full transition-all duration-300 border border-gray-700 hover:border-orange-500 text-center"
                                 style={{ fontFamily: 'Arial, sans-serif' }}
                                 onClick={() => setMobileMenuOpen(false)}
