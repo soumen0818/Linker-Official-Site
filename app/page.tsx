@@ -99,13 +99,11 @@ export default function Home() {
                 Watch how Linker automatically updates your imports
               </p>
             </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border border-gray-800 card-glow scroll-scale">
-              <div className="aspect-video flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4 pulse-animation">▶️</div>
-                  <p className="text-gray-400">Demo video coming soon</p>
-                </div>
-              </div>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border border-gray-800 card-glow scroll-scale max-w-2xl mx-auto aspect-auto">
+              <video className="w-full h-full object-cover" controls>
+                <source src="https://res.cloudinary.com/dsg5dz0ia/video/upload/v1764255598/LINKER_p6bsua.mov" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
               {[
