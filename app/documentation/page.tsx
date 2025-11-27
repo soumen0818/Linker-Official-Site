@@ -561,6 +561,16 @@ import (
                                             </div>
                                         </div>
 
+                                        <div className="mb-6">
+                                            <p className="text-sm font-semibold text-gray-400 mb-3">Watch Linker in Action:</p>
+                                            <div className="relative rounded-lg overflow-hidden bg-gray-800 border border-gray-700 max-w-md aspect-square">
+                                                <video className="w-full h-full object-cover" controls>
+                                                    <source src="https://res.cloudinary.com/dsg5dz0ia/video/upload/v1764255598/LINKER_p6bsua.mov" type="video/mp4" />
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            </div>
+                                        </div>
+
                                         <div>
                                             <p className="text-sm font-semibold text-gray-400 mb-2">Automatically updates:</p>
                                             <div className="bg-gray-800 rounded-lg p-4">
