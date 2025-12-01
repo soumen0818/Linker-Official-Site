@@ -24,8 +24,8 @@ export default function Home() {
           </svg>
         </div>
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="max-w-5xl mx-auto space-y-8">
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-tight tracking-wider hero-title">
+          <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-wider hero-title">
               <span className="text-white">
                 {'WELCOME'.split('').map((letter, index) => (
                   <span key={index} className="letter-animate" style={{ animationDelay: `${index * 0.1}s` }}>
@@ -41,15 +41,15 @@ export default function Home() {
                 ))}
               </span>
             </h1>
-            <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed fade-in-up" style={{ animationDelay: '1.4s' }}>
+            <p className="text-base sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed fade-in-up px-2" style={{ animationDelay: '1.4s' }}>
               Automatically updates import statements when you rename or move files and folders. Supports JavaScript, TypeScript, React, Python, Java, Go, and CSS with enhanced diff preview and undo/redo.
             </p>
-            <div className="pt-8 fade-in-up" style={{ animationDelay: '1.7s' }}>
+            <div className="pt-6 sm:pt-8 fade-in-up" style={{ animationDelay: '1.7s' }}>
               <a
                 href="https://marketplace.visualstudio.com/items?itemName=linkerdev.import-linker"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary text-lg px-8 py-3 pulse-glow"
+                className="btn-primary text-base sm:text-lg px-6 sm:px-8 py-2.5 sm:py-3 pulse-glow"
               >
                 INSTALL NOW
               </a>
@@ -60,11 +60,11 @@ export default function Home() {
       <section className="py-20 bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 scroll-fade-in">
-              <h2 className="text-5xl font-bold text-white mb-4">
+            <div className="text-center mb-12 sm:mb-16 scroll-fade-in">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
                 Why Choose <span className="gradient-text">Linker</span>?
               </h2>
-              <p className="text-xl text-gray-400">
+              <p className="text-lg sm:text-xl text-gray-400">
                 Built for developers who value their time
               </p>
             </div>
@@ -91,21 +91,21 @@ export default function Home() {
       <section className="py-20 bg-black border-t border-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12 scroll-fade-in">
-              <h2 className="text-5xl font-bold text-white mb-4">
+            <div className="text-center mb-8 sm:mb-12 scroll-fade-in">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
                 See <span className="gradient-text">Linker</span> in Action
               </h2>
-              <p className="text-xl text-gray-400">
+              <p className="text-lg sm:text-xl text-gray-400">
                 Watch how Linker automatically updates your imports
               </p>
             </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border border-gray-800 card-glow scroll-scale max-w-2xl mx-auto aspect-auto">
+            <div className="relative rounded-lg sm:rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border border-gray-800 card-glow scroll-scale max-w-2xl mx-auto aspect-video w-full">
               <video className="w-full h-full object-cover" controls>
                 <source src="https://res.cloudinary.com/dsg5dz0ia/video/upload/v1764255598/LINKER_p6bsua.mov" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16">
               {[
                 { number: "5+", label: "Languages Supported" },
                 { number: "1000+", label: "Files Handled" },
@@ -123,20 +123,20 @@ export default function Home() {
       <section className="py-20 bg-black border-t border-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-3xl mx-auto scroll-fade-in">
-            <h2 className="text-5xl font-bold text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
               Ready to Get Started?
             </h2>
-            <p className="text-xl text-gray-300 mb-8 whitespace-nowrap">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 px-4">
               Install Linker from VS Code Marketplace and never worry about broken imports again
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
               <Link href="/documentation#installation">
-                <button className="btn-primary text-lg px-8 py-3">
+                <button className="btn-primary text-base sm:text-lg px-6 sm:px-8 py-2.5 sm:py-3 w-full sm:w-auto">
                   Get Installation Guide
                 </button>
               </Link>
               <Link href="/documentation">
-                <button className="px-8 py-3 border border-white rounded-full text-white hover:bg-white hover:text-black transition-all duration-300">
+                <button className="px-6 sm:px-8 py-2.5 sm:py-3 border border-white rounded-full text-white hover:bg-white hover:text-black transition-all duration-300 w-full sm:w-auto">
                   Learn More
                 </button>
               </Link>
