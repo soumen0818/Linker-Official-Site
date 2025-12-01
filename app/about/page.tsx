@@ -8,27 +8,27 @@ export default function About() {
 
     return (
         <div className="min-h-screen bg-black">
-            <section className="py-20 wave-background">
+            <section className="py-12 sm:py-16 lg:py-20 wave-background">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto text-center">
-                        <h1 className="text-6xl font-bold text-white mb-6">
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
                             About <span className="gradient-text">Linker</span>
                         </h1>
-                        <p className="text-2xl text-gray-300">
+                        <p className="text-lg sm:text-xl md:text-2xl text-gray-300">
                             The ultimate VS Code extension for managing file dependencies
                         </p>
                     </div>
                 </div>
             </section>
-            <section className="py-20 bg-black border-t border-gray-900">
+            <section className="py-12 sm:py-16 lg:py-20 bg-black border-t border-gray-900">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-5xl mx-auto">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center mb-12 sm:mb-16 lg:mb-20">
                             <div className="scroll-fade-left">
-                                <h2 className="text-4xl font-bold text-white mb-6">
+                                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6">
                                     What is Linker?
                                 </h2>
-                                <div className="space-y-4 text-lg text-gray-300">
+                                <div className="space-y-3 sm:space-y-4 text-base sm:text-lg text-gray-300">
                                     <p>
                                         Linker is a powerful Visual Studio Code extension designed to eliminate one of the most tedious tasks in software development: manually updating import statements when files are moved or renamed.
                                     </p>
@@ -40,9 +40,9 @@ export default function About() {
                                     </p>
                                 </div>
                             </div>
-                            <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8 scroll-fade-right">
-                                <h3 className="text-2xl font-bold text-white mb-6">Key Features</h3>
-                                <ul className="space-y-4">
+                            <div className="bg-gray-900 border border-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 scroll-fade-right">
+                                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Key Features</h3>
+                                <ul className="space-y-3 sm:space-y-4">
                                     {[
                                         "Automatic import/export updates",
                                         "Multi-language support (JS, TS, Python, Java, Go, CSS)",
@@ -53,8 +53,8 @@ export default function About() {
                                         "Zero configuration required"
                                     ].map((feature, index) => (
                                         <li key={index} className="flex items-start">
-                                            <span className="text-orange-500 mr-3 text-xl">✓</span>
-                                            <span className="text-gray-300">{feature}</span>
+                                            <span className="text-orange-500 mr-3 text-lg sm:text-xl shrink-0">✓</span>
+                                            <span className="text-sm sm:text-base text-gray-300">{feature}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -63,13 +63,13 @@ export default function About() {
                     </div>
                 </div>
             </section>
-            <section className="py-20 bg-black border-t border-gray-900">
+            <section className="py-12 sm:py-16 lg:py-20 bg-black border-t border-gray-900">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-5xl mx-auto">
-                        <h2 className="text-4xl font-bold text-white text-center mb-16 scroll-fade-in">
+                        <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-10 sm:mb-12 lg:mb-16 scroll-fade-in">
                             How It Works
                         </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
                             {[
                                 {
                                     step: "01",
@@ -88,22 +88,22 @@ export default function About() {
                                 }
                             ].map((item, index) => (
                                 <div key={index} className="text-center scroll-fade-in">
-                                    <div className="text-5xl font-bold gradient-text mb-4">{item.step}</div>
-                                    <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                                    <p className="text-gray-300">{item.description}</p>
+                                    <div className="text-4xl sm:text-5xl font-bold gradient-text mb-3 sm:mb-4">{item.step}</div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{item.title}</h3>
+                                    <p className="text-sm sm:text-base text-gray-300">{item.description}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </div>
             </section>
-            <section className="py-20 bg-black border-t border-gray-900">
+            <section className="py-12 sm:py-16 lg:py-20 bg-black border-t border-gray-900">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-5xl mx-auto">
-                        <h2 className="text-4xl font-bold text-white text-center mb-16 scroll-fade-in">
+                        <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-10 sm:mb-12 lg:mb-16 scroll-fade-in">
                             Why Developers Love Linker
                         </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                             {[
                                 {
                                     emoji: "⏱️",
@@ -127,9 +127,9 @@ export default function About() {
                                 }
                             ].map((item, index) => (
                                 <div key={index} className="feature-card group scroll-fade-in">
-                                    <div className="text-5xl mb-4 icon-bounce">{item.emoji}</div>
-                                    <h3 className="text-xl font-bold text-white mb-2 gradient-text-hover">{item.title}</h3>
-                                    <p className="text-gray-300">{item.description}</p>
+                                    <div className="text-4xl sm:text-5xl mb-3 sm:mb-4 icon-bounce">{item.emoji}</div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2 gradient-text-hover">{item.title}</h3>
+                                    <p className="text-sm sm:text-base text-gray-300">{item.description}</p>
                                     <div className="card-shine"></div>
                                 </div>
                             ))}
@@ -137,18 +137,18 @@ export default function About() {
                     </div>
                 </div>
             </section>
-            <section className="py-20 bg-black border-t border-gray-900">
+            <section className="py-12 sm:py-16 lg:py-20 bg-black border-t border-gray-900">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div className="max-w-3xl mx-auto scroll-fade-in">
-                        <h2 className="text-5xl font-bold text-white mb-6">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
                             Ready to Try Linker?
                         </h2>
-                        <p className="text-xl text-gray-300 mb-8">
+                        <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 px-4">
                             Join thousands of developers who have streamlined their workflow with Linker
                         </p>
                         <div className="flex justify-center">
                             <Link href="/documentation">
-                                <button className="btn-primary text-lg px-8 py-3">
+                                <button className="btn-primary text-base sm:text-lg px-6 sm:px-8 py-2.5 sm:py-3">
                                     View User Guide
                                 </button>
                             </Link>
